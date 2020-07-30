@@ -1,0 +1,56 @@
+const getUserChoice = userInput => {
+ userInput = userInput.toLowerCase();
+ if(userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb') {
+   return userInput;
+ } else {
+   console.log('Error!');
+ }
+};
+function getComputerChoice() {
+  random = Math.floor(Math.random() * 3);
+  switch (random){
+    case 0:
+    return 'rock';
+    case 1:
+    return 'scissors';
+    case 2:
+    return 'paper';
+      }
+}
+function determineWinner(userChoice, computerChoice) {
+  if (userChoice === computerChoice){
+    return 'You tied!';
+  }
+  if (userChoice === 'rock'){
+    if (computerChoice ==='paper'){
+      return 'The Computer Won!';
+    } else {
+      return 'Congrats The Player Won!';
+    }
+  }
+  if (userChoice === 'paper'){
+    if (computerChoice ==='scissors'){
+      return 'The Computer Won!';
+    } else {
+      return 'Congrats The Player Won!';
+    }
+  }
+  if (userChoice === 'scissors'){
+    if (computerChoice ==='rock'){
+      return 'The Computer Won!';
+    } else {
+      return 'Congrats The Player Won!';
+    }
+  }
+  if (userChoice === 'bomb'){
+    return 'You Used a Bomb so therfore you won!';
+  }
+}
+const playGame = () => {
+  const userChoice = getUserChoice('bomb');
+  const computerChoice = getComputerChoice();
+  console.log('You Threw:' + userChoice );
+  console.log('The Computer threw:'+ computerChoice);
+  console.log(determineWinner(userChoice, computerChoice));
+}
+playGame();
